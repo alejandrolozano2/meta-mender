@@ -9,4 +9,5 @@ SRC_URI_append += " \
                         file://0001-imx8mq_evk-BOOTCOUNT.patch \
 			file://0001-Erase-CONFIG_ENV_OFFSET-CONFIG_ENV_SIZE.patch \
 			file://0001-Enable-load-command.patch \
+			file://0002-use-correct-loadaddr-and-fdt_addr.patch \
 "
