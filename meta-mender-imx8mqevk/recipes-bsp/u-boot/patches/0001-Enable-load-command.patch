@@ -1,0 +1,22 @@
+From 3ce2b2a25d6d1475e10da8e04f841c5ae26296e0 Mon Sep 17 00:00:00 2001
+From: Alejandro Lozano Lozano <alejandro.lozano@nxp.com>
+Date: Wed, 30 May 2018 12:14:29 -0500
+Subject: [PATCH] Enable load command
+
+---
+ configs/imx8mq_evk_defconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configs/imx8mq_evk_defconfig b/configs/imx8mq_evk_defconfig
+index 36f7629..713bbc6 100644
+--- a/configs/imx8mq_evk_defconfig
++++ b/configs/imx8mq_evk_defconfig
+@@ -37,4 +37,4 @@ CONFIG_SPL_LOAD_FIT=y
+ CONFIG_USB_TCPC=y
+ CONFIG_VIDEO=y
+ CONFIG_VIDEO_IMX8_HDMI=y
+-
++CONFIG_CMD_FS_GENERIC=y
+-- 
+2.7.4
+

@@ -1,0 +1,25 @@
+From 5b11ef62d2d1fd9684ae9981f59bcfbe040c55c6 Mon Sep 17 00:00:00 2001
+From: Alejandro Lozano <alejandro.lozano@nxp.com>
+Date: Thu, 24 May 2018 23:31:29 +0000
+Subject: [PATCH] make error with Yocto
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index d233f83..49893cb 100644
+--- a/Makefile
++++ b/Makefile
+@@ -254,7 +254,7 @@ CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
+ 	  else if [ -x /bin/bash ]; then echo /bin/bash; \
+ 	  else echo sh; fi ; fi)
+ 
+-HOSTCC       = cc
++HOSTCC       = gcc
+ HOSTCXX      = c++
+ HOSTCFLAGS   = -Wall -Wstrict-prototypes -O2 -fomit-frame-pointer \
+ 		$(if $(CONFIG_TOOLS_DEBUG),-g)
+-- 
+1.9.1
+

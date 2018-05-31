@@ -1,0 +1,29 @@
+From 03a07f2338f327069024a79c6f4b2fce645d8336 Mon Sep 17 00:00:00 2001
+From: Alejandro Lozano <alejandro.lozano@nxp.com>
+Date: Mon, 28 May 2018 16:54:39 +0000
+Subject: [PATCH] Erase CONFIG_ENV_OFFSET CONFIG_ENV_SIZE
+
+---
+ include/configs/imx8mq_evk.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/include/configs/imx8mq_evk.h b/include/configs/imx8mq_evk.h
+index 2b4c1ce..f01c05b 100644
+--- a/include/configs/imx8mq_evk.h
++++ b/include/configs/imx8mq_evk.h
+@@ -190,10 +190,10 @@
+         (CONFIG_SYS_INIT_RAM_ADDR + CONFIG_SYS_INIT_SP_OFFSET)
+ 
+ #define CONFIG_ENV_OVERWRITE
+-#define CONFIG_ENV_OFFSET               (64 * SZ_64K)
++/*#define CONFIG_ENV_OFFSET               (64 * SZ_64K) */
+ #define CONFIG_ENV_SIZE			0x1000
+ #define CONFIG_ENV_IS_IN_MMC
+-#define CONFIG_SYS_MMC_ENV_DEV		1   /* USDHC2 */
++/*#define CONFIG_SYS_MMC_ENV_DEV		1 */  /* USDHC2 */
+ #define CONFIG_MMCROOT			"/dev/mmcblk1p2"  /* USDHC2 */
+ 
+ #define CONFIG_BOOTCOUNT_ENV
+-- 
+1.9.1
+

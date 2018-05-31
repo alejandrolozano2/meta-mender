@@ -3,7 +3,7 @@
 require u-boot-fw-utils-mender.inc
 
 
-
+inherit uboot-config
 #-------------------------------------------------------------------------------
 # Everything below here is dedicated to providing an automatic OOTB
 # u-boot-fw-utils recipe, for those configurations that lack it. It does this by
@@ -16,7 +16,9 @@ PROVIDES = "u-boot-fw-utils"
 RPROVIDES_${PN} = "u-boot-fw-utils"
 
 INSANE_SKIP_${PN} = "already-stripped"
-EXTRA_OEMAKE_class-target = 'CROSS_COMPILE=${TARGET_PREFIX} CC="${CC} ${CFLAGS} ${LDFLAGS}" HOSTCC="${BUILD_CC} ${BUILD_CFLAGS} ${BUILD_LDFLAGS}" V=1'
+EXTRA_OEMAKE_class-target = 'CROSS_COMPILE=${TARGET_PREFIX} CC="${CC} ${CFLAGS} ${LDFLAGS}" V=1'
+
+# HOSTCC="${BUILD_CC} ${BUILD_CFLAGS} ${BUILD_LDFLAGS}" 
 
 S = "${WORKDIR}/git"
 
@@ -42,7 +44,9 @@ do_patch() {
 do_patch[depends] += "${MENDER_PREFERRED_UBOOT}:do_mender_tar_src"
 
 do_compile () {
-    oe_runmake ${UBOOT_MACHINE}
+    echo "ALEX"
+    echo ${UBOOT_MACHINE}
+    oe_runmake -C ${S} ${UBOOT_MACHINE}
 
     # Detect what the build target to the environment tools is. It changed from
     # "env" to "envtools" in v2017.09.
@@ -53,7 +57,7 @@ do_compile () {
         exit 1
     fi
 
-    oe_runmake $ENV_TARGET
+    oe_runmake -C ${S} $ENV_TARGET
 }
 
 do_install () {

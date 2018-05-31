@@ -17,6 +17,8 @@ MENDER_UBOOT_AUTO_CONFIGURE ??= "${@bb.utils.contains('DISTRO_FEATURES', 'mender
 ################################################################################
 FILESEXTRAPATHS_prepend := "${THISDIR}/patches:${THISDIR}/files:"
 
+SRC_URI_append = " file://0001-make-error-with-Yocto.patch"
+
 SRC_URI_append = " file://0001-Add-missing-header-which-fails-on-recent-GCC.patch"
 SRC_URI_append = " file://0002-Generic-boot-code-for-Mender.patch"
 SRC_URI_append = " file://0003-Integration-of-Mender-boot-code-into-U-Boot.patch"
@@ -179,6 +181,7 @@ do_mender_uboot_auto_configure() {
 
     env \
         BUILDCC="${BUILD_CC}" \
+	echo ${BUILDCC} \
         ./uboot_auto_configure.sh \
         --config=${UBOOT_MACHINE} \
         --src-dir=${S} \
